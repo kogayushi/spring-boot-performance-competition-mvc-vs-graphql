@@ -1,0 +1,17 @@
+services:
+  graphql:
+    build:
+      context: ./graphql
+      dockerfile: ../Dockerfile
+    ports:
+      - "8080:8080"
+    mem_limit: 2G
+    cpus: "1.0"
+  mvc:
+    build:
+      context: ./mvc
+      dockerfile: ../Dockerfile
+    ports:
+      - "8081:8080"
+    mem_limit: 2G
+    cpus: "1.0"
