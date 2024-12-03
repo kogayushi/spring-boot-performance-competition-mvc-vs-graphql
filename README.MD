@@ -1,3 +1,9 @@
+## How to build applications
+just run the following command in the terminal
+```bash
+./build.sh
+```
+
 ## How to start applications
 just run the following command in the terminal
 ```bash

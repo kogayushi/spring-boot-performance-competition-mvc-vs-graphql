@@ -1,16 +1,12 @@
 services:
   graphql:
-    build:
-      context: ./graphql
-      dockerfile: ../Dockerfile
+    image: kogayushi/graphql
     ports:
       - "8080:8080"
     mem_limit: 2G
     cpus: "1.0"
   mvc:
-    build:
-      context: ./mvc
-      dockerfile: ../Dockerfile
+    image: kogayushi/mvc
     ports:
       - "18080:8080"
     mem_limit: 2G
