@@ -22,10 +22,12 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
 	testImplementation 'org.springframework:spring-webflux'
@@ -41,4 +43,16 @@ kotlin {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named("bootBuildImage") {
+	environment = [
+			"BP_JVM_TYPE"                : "JDK",
+			"BP_JVM_VERSION"             : "21",
+			"BPE_DEFAULT_BPL_JMX_ENABLED": "true",
+			"BPE_DEFAULT_BPL_JMX_PORT"   : "5000",
+			"BPE_DEFAULT_BPL_JFR_ENABLED": "true",
+			"BP_JVM_CDS_ENABLED"         : "true",
+	]
+	imageName = "kogayushi/graphql"
 }
