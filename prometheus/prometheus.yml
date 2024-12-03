@@ -1,0 +1,15 @@
+global:
+  scrape_interval:     15s
+scrape_configs:
+  - job_name: 'graphql'
+
+    scrape_interval: 5s
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ['graphql:8080']
+  - job_name: 'mvc'
+
+    scrape_interval: 5s
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ['mvc:8080']
