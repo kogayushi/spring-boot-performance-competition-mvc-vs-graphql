@@ -13,3 +13,9 @@ scrape_configs:
     metrics_path: /actuator/prometheus
     static_configs:
       - targets: ['mvc:8080']
+  - job_name: 'mix'
+
+    scrape_interval: 5s
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: ['mix:8080']
